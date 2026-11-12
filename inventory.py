@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from pathlib import Path
 
-folder = Path(__file__).resolve().parent
+folder = Path(__file__).resolve().parent / "sample_collection"
 
 print("Archive Atlas file inventory")
 for item in sorted(folder.iterdir()):
