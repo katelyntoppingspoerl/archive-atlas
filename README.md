@@ -1,6 +1,6 @@
 # Archive Atlas
 
-A Python tool for inventorying digital collections and recording file metadata. It lists the files directly inside a folder and reports each filename, size in bytes, and last-modified date in UTC.
+A Python tool for inventorying digital collections and recording file metadata. It lists the files directly inside a folder and reports each filename, size in bytes, file extension and last-modified date in UTC.
 
 ## Quick start
 
@@ -28,4 +28,4 @@ Replace `/path/to/your/collection` with your folder’s path. Use `.` to scan th
 python3 inventory.py --csv sample-inventory.csv
 ```
 
-Open `sample-inventory.csv` in a spreadsheet app to view the `filename`, `size_bytes`, and `modified_date_utc` columns. Each export needs a new filename because Archive Atlas protects existing files from being overwritten.
+Open `sample-inventory.csv` in a spreadsheet app to view the filename, size_bytes, modified_date_utc, and extension  columns. Each export needs a new filename because Archive Atlas protects existing files from being overwritten.

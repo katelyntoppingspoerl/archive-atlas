@@ -21,14 +21,18 @@ for item in sorted(folder.iterdir()):
         file_info = item.stat()
         size_bytes = file_info.st_size
         modified_date = datetime.fromtimestamp(file_info.st_mtime, tz=timezone.utc).date()
-        rows.append((item.name, size_bytes, modified_date))
-        print(f"- {item.name} ({size_bytes} bytes) | Modified: {modified_date} UTC")
+        extension = item.suffix
+        rows.append((item.name, size_bytes, modified_date, extension))
+        print(
+            f"- {item.name} ({size_bytes} bytes) | Modified: {modified_date} UTC"
+            f" | Extension: {extension or '(none)'}"
+        )
 
 if args.csv is not None:
     try:
         with args.csv.open("x", encoding="utf-8", newline="") as csv_file:
             writer = csv.writer(csv_file)
-            writer.writerow(["filename", "size_bytes", "modified_date_utc"])
+            writer.writerow(["filename", "size_bytes", "modified_date_utc", "extension"])
             writer.writerows(rows)
     except OSError as error:
         parser.error(f"Could not create CSV: {error}")
