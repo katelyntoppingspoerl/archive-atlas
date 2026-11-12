@@ -29,3 +29,5 @@ python3 inventory.py --csv sample-inventory.csv
 ```
 
 Open `sample-inventory.csv` in a spreadsheet app to view the filename, size_bytes, modified_date_utc, and extension  columns. Each export needs a new filename because Archive Atlas protects existing files from being overwritten.
+
+Files without an extension show (none) in the terminal and have a blank extension cell in the CSV.
