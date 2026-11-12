@@ -1,7 +1,16 @@
+import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 
-folder = Path(__file__).resolve().parent / "sample_collection"
+default_folder = Path(__file__).resolve().parent / "sample_collection"
+
+parser = argparse.ArgumentParser(description="List files and their metadata.")
+parser.add_argument("folder", nargs="?", type=Path, default=default_folder)
+args = parser.parse_args()
+
+folder = args.folder
+if not folder.is_dir():
+    parser.error(f"Folder does not exist or is not a directory: {folder}")
 
 print("Archive Atlas file inventory")
 for item in sorted(folder.iterdir()):
